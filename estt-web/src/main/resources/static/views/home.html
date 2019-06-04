@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Smoke Testing</title>
+<style>
+html,
+body {
+  margin: 0px;
+}
+</style>    
+</head>
+<body ng-app="dashboard">
+<h2 align="center" style="display: block;font-weight: bold;">View Real time progress of Smoke Testing</h2>
+<hr/>
+
+<div ng-controller="HomeController">
+        Please enter user id to view progress:
+        <input type="text" ng-model="userId" />
+        <br />
+        <br />
+        <input type="button" value="Show Real Time Progress" ng-click="displayProgressOfInitaitedUser()" />
+        <!-- <input type="button" value="Create Config File" ng-click="createEsstConfigFile()" /> -->
+    </div>
+</body>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/HomeController.js"></script>
+<script src="js/app/HomeService.js"></script>
+<script src="js/app/Chart.min.js"></script>
+<script src="js/app/angular-chart.min.js"></script>
+<link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/app/app.css"/>
+</html>

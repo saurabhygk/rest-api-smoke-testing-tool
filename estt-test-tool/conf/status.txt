@@ -1,0 +1,3 @@
+SUCCESS ->[http://localhost:8081/asp-auth/auth-request] executed successfully and matched with expected configuration.
+ERROR ->[http://localhost:8081/asp-auth/download/message] has returned [500] which is different than expected response code: 200
+ERROR ->[http://localhost:8081/asp-auth/ack/read] has returned [500] which is different than expected response code: 200

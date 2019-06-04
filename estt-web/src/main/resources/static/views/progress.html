@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Smoke Testing</title>
+<style>
+html,
+body {
+  margin: 0px;
+}
+</style>    
+</head>
+<body ng-app="dashboard">
+<h2 align="center" style="display: block;font-weight: bold;">Smoke Testing Progress for User : <span id="userId"></span> </h2>
+<hr/>
+<div style= "border:1px solid black;" class="container" ng-controller="EndPointStatusController" data-ng-init="callAtInterval()">
+	<div ng-switch on="status">
+      <div ng-switch-when="0">
+      	<h3 align="center" style="color: orange;">In Progress..!!</h3>
+      </div>
+      <div ng-switch-when="1">
+      	<h3 align="center" style="color: green;">Finished..!!</h3>
+      </div>
+      <div ng-switch-when="2">
+      	<h3 align="center" style="color: red;">Error..!!</h3>
+      </div>
+    </div>
+	<canvas id="pieChart" class="chart chart-pie" chart-legend="true" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="colours" chart-click="onclick"></canvas> 
+</div>
+
+</body>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/EndPointStatusController.js"></script>
+<script src="js/app/EndPointStatusService.js"></script>
+<script src="js/app/Chart.min.js"></script>
+<script src="js/app/angular-chart.min.js"></script>
+<link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/app/app.css"/>
+</html>

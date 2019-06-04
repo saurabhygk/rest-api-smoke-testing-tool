@@ -1,0 +1,18 @@
+SQ| 1
+M | POST
+U | http://localhost:8080/asp-auth/ack/read
+RH | Content-Type:application/json
+RB | {"ack": "1","ackType": "string","additionalData": "string","certId": "string","deviceId": "string","messageId": "string","messageType": "string","ts": "string","userId": "string"}
+ERC | 200
+ER | Read Ack processed successfully
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | requestParams-apiClientId=rakutentravel_ota_test
+RB | <AvailRequestSegments><AvailRequestSegment><HotelSearchCriteria><Criterion><HotelRef ChainCode="ZZ" HotelCode="107696"/><HotelRef ChainCode="ZZ" HotelCode="107717"/><HotelRef ChainCode="ZZ" HotelCode="108010"/><HotelRef ChainCode="ZZ" HotelCode="109132"/><HotelRef ChainCode="ZZ" HotelCode="109173"/><HotelRef ChainCode="ZZ" HotelCode="109323"/><HotelRef ChainCode="ZZ" HotelCode="110068"/><HotelRef ChainCode="ZZ" HotelCode="110070"/><HotelRef ChainCode="ZZ" HotelCode="110073"/><HotelRef ChainCode="ZZ" HotelCode="110074"/><HotelRef ChainCode="ZZ" HotelCode="110926"/> </Criterion></HotelSearchCriteria><StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/><RoomStayCandidates> <RoomStayCandidate Quantity="2"><GuestCounts><GuestCount Age="20" Count="2"/><GuestCount Age="10" Count="2"/><GuestCount Age="8" Count="2"/><GuestCount Age="2" Count="4"/></GuestCounts> </RoomStayCandidate></RoomStayCandidates><TPA_Extensions> <InfantOption RequirementType="1" Count="1"/> <InfantOption RequirementType="2" Count="1"/><InfantOption RequirementType="3" Count="1"/></TPA_Extensions></AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+ENDOFREAD
+
+ERRORCODES | SY001,SY002,EDAJ0001,EDAJ0002,EDAJ0003,EDAJ0004,ETAJ000

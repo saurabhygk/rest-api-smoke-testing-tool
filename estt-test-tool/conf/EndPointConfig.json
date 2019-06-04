@@ -1,0 +1,24 @@
+[ {
+  "sequence" : "1",
+  "methodType" : "POST",
+  "url" : "http://localhost:8081/asp-auth/auth-request",
+  "requestHeaders" : "Content-Type:application/json",
+  "requestBody" : "{\"callbackUrl\":\"http://localhost:8081/\",\"messageId\":\"messageId1\",\"messageType\":\"PUSHNOTIF\",\"payloadData\":{\"msgData\":{\"data\":\"Hello\",\"dataToBeSigned\":\"64\",\"file\":{},\"fileFormat\":{},\"hash\":{}},\"msgFlag\":0,\"notifyMsgData\":{\"textToDisplay\":\"Hello\"},\"notifyMsgFlag\":0,\"passType\":0},\"softTokenType\":\"PUSHNOTIF\",\"ts\":\"eKD4AAAEF3\",\"vseSign\":\"string\"}",
+  "expectedResponseCode": "400"
+}, {
+  "sequence" : "2",
+  "methodType" : "POST",
+  "url" : "http://localhost:8081/asp-auth/download/message",
+  "requestHeaders" : "Content-Type:application/json",
+  "requestBody" : "{\"certId\":\"adasdas\",\"deviceId\":\"asdasd\",\"messageId\":\"messageId1\",\"messageType\":\"PUSHNOTIF\",\"ts\":\"eKD4AAAEF3\",\"userId\":\"S5005083A\"}",
+  "expectedResponseCode": "200",
+  "expectedResponse": "Message Request processed successfully"
+}, {
+  "sequence" : "3",
+  "methodType" : "POST",
+  "url" : "http://localhost:8081/asp-auth/ack/read",
+  "requestHeaders" : "Content-Type:application/json",
+  "requestBody" : "{\"ack\":\"1\",\"ackType\":\"DELIVERED\",\"additionalData\":\"\",\"certId\":\"adasdas\",\"deviceId\":\"asdasd\",\"messageId\":\"messageId1\",\"messageType\":\"PUSHNOTIF\",\"ts\":\"eKD4AAAEF3\",\"userId\":\"S5005083A\"}",
+  "expectedResponseCode": "200",
+  "expectedResponse": "Read Ack processed successfully"
+} ]

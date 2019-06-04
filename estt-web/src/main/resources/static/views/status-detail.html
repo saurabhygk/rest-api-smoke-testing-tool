@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Smoke Testing</title>
+<style>
+html, body {
+	margin: 0px;
+}
+
+table{
+    position:fixed;
+    width:100%;
+    box-sizing:border-box; /* causes item size to include border and padding */
+    -moz-box-sizing:border-box; /*for browser compatibility*/
+}
+</style>
+</head>
+<body ng-app="dashboard" ng-controller="StatusDetailController as list">
+	<h2 align="center" style="display: block; font-weight: bold;">
+		Smoke Testing Status detail</h2>
+	<hr />
+
+	<table border=1>
+		<thead>
+			<tr>
+				<th>URL</th>
+				<th>STATUS</th>
+				<th>DESCRIPTION</th>
+			</tr>
+		</thead>
+		<tr ng-repeat="item in filteredItems">
+			<td>{{item.url}}</td>
+			<td>{{item.status}}</td>
+			<td>{{item.error}}</td>
+		</tr>
+	</table>
+	<div data-pagination="" data-num-pages="numOfPages()"
+		data-current-page="curPage" data-max-size="maxSize"
+		data-boundary-links="true"></div>
+
+</body>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/StatusDetailController.js"></script>
+<script src="js/app/StatusDetailService.js"></script>
+<script src="js/app/Chart.min.js"></script>
+<script src="js/app/angular-chart.min.js"></script>
+<link rel="stylesheet" href="css/lib/bootstrap.min.css" />
+<link rel="stylesheet" href="css/app/app.css" />
+</html>

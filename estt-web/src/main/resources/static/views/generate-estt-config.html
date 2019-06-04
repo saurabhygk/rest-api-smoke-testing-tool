@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta chrset="UTF 8">
+    <title>Smoke Test</title>
+</head>
+
+<body ng-app="dashboard" ng-controller="HomeController">
+  <h2>Form</h2>
+  <form action="" method="post" id="configFile" name="esttConfigFileForm">
+    Sequence:
+    <input type="text" ng-model="formData.sequence"/>
+    <br/> Select Method Type:
+    <select ng-model="formData.methodType">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+    <br/> URL:
+    <input type="text" ng-model="formData.url"/>
+    <br/> Request Header:
+    <input type="text" ng-model="formData.requestHeader"/>
+    <br/> Request Param:
+    <input type="text" ng-model="formData.requestParam"/>
+    <br/> Request Body:
+    <input type="text" ng-model="formData.requestBody"/>
+    <br/> Expected Response Code:
+    <input type="text" ng-model="formData.exptecedResponseCode"/>
+    <br/> Expected Response:
+    <input type="text" ng-model="formData.exptecedResponse"/>
+    <p>
+      <input type="submit" ng-click="serialize($event)" />
+    </p>
+  </form>
+</body>
+
+
+
+
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/HomeController.js"></script>
+<script src="js/app/HomeService.js"></script>
+<script src="js/app/Chart.min.js"></script>
+<script src="js/app/angular-chart.min.js"></script>
+<link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/app/app.css"/>
+</html>

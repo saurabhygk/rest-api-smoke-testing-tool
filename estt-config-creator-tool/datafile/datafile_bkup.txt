@@ -1,0 +1,132 @@
+SQ| 1
+M | POST
+U | http://localhost:8080/asp-auth/ack/read
+RH | Content-Type:application/json
+RB | {"ack": "1","ackType": "string","additionalData": "string","certId": "string","deviceId": "string","messageId": "string","messageType": "string","ts": "string","userId": "string"}
+ERC | 200
+ER | Read Ack processed successfully
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | requestParams-apiClientId=rakutentravel_ota_test
+RB | <AvailRequestSegments><AvailRequestSegment><HotelSearchCriteria><Criterion><HotelRef ChainCode="ZZ" HotelCode="107696"/><HotelRef ChainCode="ZZ" HotelCode="107717"/><HotelRef ChainCode="ZZ" HotelCode="108010"/><HotelRef ChainCode="ZZ" HotelCode="109132"/><HotelRef ChainCode="ZZ" HotelCode="109173"/><HotelRef ChainCode="ZZ" HotelCode="109323"/><HotelRef ChainCode="ZZ" HotelCode="110068"/><HotelRef ChainCode="ZZ" HotelCode="110070"/><HotelRef ChainCode="ZZ" HotelCode="110073"/><HotelRef ChainCode="ZZ" HotelCode="110074"/><HotelRef ChainCode="ZZ" HotelCode="110926"/> </Criterion></HotelSearchCriteria><StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/><RoomStayCandidates> <RoomStayCandidate Quantity="2"><GuestCounts><GuestCount Age="20" Count="2"/><GuestCount Age="10" Count="2"/><GuestCount Age="8" Count="2"/><GuestCount Age="2" Count="4"/></GuestCounts> </RoomStayCandidate></RoomStayCandidates><TPA_Extensions> <InfantOption RequirementType="1" Count="1"/> <InfantOption RequirementType="2" Count="1"/><InfantOption RequirementType="3" Count="1"/></TPA_Extensions></AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<HotelRef ChainCode="ZZ" HotelCode="107696"/>				<HotelRef ChainCode="ZZ" HotelCode="107717"/>				<HotelRef ChainCode="ZZ" HotelCode="108010"/>				<HotelRef ChainCode="ZZ" HotelCode="109132"/>				<HotelRef ChainCode="ZZ" HotelCode="109173"/>				<HotelRef ChainCode="ZZ" HotelCode="109323"/>				<HotelRef ChainCode="ZZ" HotelCode="110068"/>				<HotelRef ChainCode="ZZ" HotelCode="110070"/>				<HotelRef ChainCode="ZZ" HotelCode="110073"/>				<HotelRef ChainCode="ZZ" HotelCode="110074"/>				<HotelRef ChainCode="ZZ" HotelCode="110926"/>				<MealPlan Code="19 22"/>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<HotelRef ChainCode="ZZ" HotelCode="107696"/>				<HotelRef ChainCode="ZZ" HotelCode="107717"/>				<HotelRef ChainCode="ZZ" HotelCode="108010"/>				<HotelRef ChainCode="ZZ" HotelCode="109132"/>				<HotelRef ChainCode="ZZ" HotelCode="109173"/>				<HotelRef ChainCode="ZZ" HotelCode="109323"/>				<HotelRef ChainCode="ZZ" HotelCode="110068"/>				<HotelRef ChainCode="ZZ" HotelCode="110070"/>				<HotelRef ChainCode="ZZ" HotelCode="110073"/>				<HotelRef ChainCode="ZZ" HotelCode="110074"/>				<HotelRef ChainCode="ZZ" HotelCode="110926"/>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount AgeQualifyingCode="10" Count="2"/>					<GuestCount AgeQualifyingCode="8" Count="4"/>					<GuestCount AgeQualifyingCode="7" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment><HotelSearchCriteria>			<Criterion><TPA_Extensions><Position Latitude="35.6895" Longitude="139.6917"/><Radius Distance="100" UnitOfMeasureCode="2" /></TPA_Extensions>	</Criterion></HotelSearchCriteria><StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/><RoomStayCandidates><RoomStayCandidate Quantity="2"><GuestCounts>	<GuestCount Age="20" Count="2"/><GuestCount Age="10" Count="2"/><GuestCount Age="8" Count="2"/><GuestCount Age="2" Count="4"/>	</GuestCounts></RoomStayCandidate></RoomStayCandidates></AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<TPA_Extensions>					<Position Latitude="35.6895" Longitude="139.6917" />					<Radius Distance="100" UnitOfMeasureCode="2" />				</TPA_Extensions>				<MealPlan Code="19 22"/>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<TPA_Extensions>					<Position Latitude="35.6895" Longitude="139.6917" />					<Radius Distance="100" UnitOfMeasureCode="2" />				</TPA_Extensions>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount AgeQualifyingCode="10" Count="2"/>					<GuestCount AgeQualifyingCode="8" Count="4"/>					<GuestCount AgeQualifyingCode="7" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<RatePlanCandidates>					<RatePlanCandidate RPH="1" RatePlanCode="525282">						<HotelRefs>							<HotelRef HotelCode="107717"/>						</HotelRefs>					</RatePlanCandidate>				</RatePlanCandidates>				<RoomStayCandidates>					<RoomStayCandidate RatePlanCandidateRPH="1" RoomTypeCode="heya6"/>				</RoomStayCandidates>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<RatePlanCandidates>					<RatePlanCandidate RPH="1" RatePlanCode="525282">						<HotelRefs>							<HotelRef HotelCode="107717"/>						</HotelRefs>					</RatePlanCandidate>				</RatePlanCandidates>				<RoomStayCandidates>					<RoomStayCandidate RatePlanCandidateRPH="1" RoomTypeCode="heya6"/>				</RoomStayCandidates>				<MealPlan Code="19 22"/>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<RatePlanCandidates>					<RatePlanCandidate RPH="1" RatePlanCode="525282">						<HotelRefs>							<HotelRef HotelCode="107717"/>						</HotelRefs>					</RatePlanCandidate>				</RatePlanCandidates>				<RoomStayCandidates>					<RoomStayCandidate RatePlanCandidateRPH="1" RoomTypeCode="heya6"/>				</RoomStayCandidates>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount AgeQualifyingCode="10" Count="2"/>					<GuestCount AgeQualifyingCode="8" Count="4"/>					<GuestCount AgeQualifyingCode="7" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<HotelRef ChainCode="ZZ" HotelCode="1000009"/>				<HotelRef ChainCode="ZZ" HotelCode="107873"/>				<HotelRef ChainCode="ZZ" HotelCode="108326"/>				<HotelRef ChainCode="ZZ" HotelCode="108351"/>				<HotelRef ChainCode="ZZ" HotelCode="108482"/>				<HotelRef ChainCode="ZZ" HotelCode="108639"/>				<HotelRef ChainCode="ZZ" HotelCode="109001"/>				<HotelRef ChainCode="ZZ" HotelCode="109253"/>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<HotelRef ChainCode="ZZ" HotelCode="1000009"/>				<HotelRef ChainCode="ZZ" HotelCode="107873"/>				<HotelRef ChainCode="ZZ" HotelCode="108326"/>				<HotelRef ChainCode="ZZ" HotelCode="108351"/>				<HotelRef ChainCode="ZZ" HotelCode="108482"/>				<HotelRef ChainCode="ZZ" HotelCode="108639"/>				<HotelRef ChainCode="ZZ" HotelCode="109001"/>				<HotelRef ChainCode="ZZ" HotelCode="109253"/>				<MealPlan Code="19 22"/>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<HotelRef ChainCode="ZZ" HotelCode="1000009"/>				<HotelRef ChainCode="ZZ" HotelCode="107873"/>				<HotelRef ChainCode="ZZ" HotelCode="108326"/>				<HotelRef ChainCode="ZZ" HotelCode="108351"/>				<HotelRef ChainCode="ZZ" HotelCode="108482"/>				<HotelRef ChainCode="ZZ" HotelCode="108639"/>				<HotelRef ChainCode="ZZ" HotelCode="109001"/>				<HotelRef ChainCode="ZZ" HotelCode="109253"/>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount AgeQualifyingCode="10" Count="2"/>					<GuestCount AgeQualifyingCode="8" Count="4"/>					<GuestCount AgeQualifyingCode="7" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<TPA_Extensions>					<Position Latitude="0" Longitude="0" />					<Radius Distance="100" UnitOfMeasureCode="2" />				</TPA_Extensions>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<TPA_Extensions>					<Position Latitude="0" Longitude="0" />					<Radius Distance="100" UnitOfMeasureCode="2" />				</TPA_Extensions>				<MealPlan Code="19 22"/>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><AvailRequestSegments>	<AvailRequestSegment>		<HotelSearchCriteria>			<Criterion>				<TPA_Extensions>					<Position Latitude="0" Longitude="0" />					<Radius Distance="100" UnitOfMeasureCode="2" />				</TPA_Extensions>			</Criterion>		</HotelSearchCriteria>		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount AgeQualifyingCode="10" Count="2"/>					<GuestCount AgeQualifyingCode="8" Count="4"/>					<GuestCount AgeQualifyingCode="7" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/></TPA_Extensions>	</AvailRequestSegment></AvailRequestSegments></OTA_HotelAvailRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelSearchRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><Criteria><Criterion><Position Latitude="35.6895" Longitude="139.6917" /><Radius Distance="100" UnitOfMeasureCode="2" /><StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/><RoomStayCandidates><RoomStayCandidate Quantity="2"><GuestCounts><GuestCount Age="20" Count="2"/><GuestCount Age="10" Count="2"/><GuestCount Age="8" Count="2"/><GuestCount Age="2" Count="4"/></GuestCounts></RoomStayCandidate></RoomStayCandidates><TPA_Extensions><InfantOption RequirementType="1" Count="1"/><InfantOption RequirementType="2" Count="1"/><InfantOption RequirementType="3" Count="1"/> </TPA_Extensions></Criterion></Criteria></OTA_HotelSearchRQ>
+
+SQ| 1
+M | POST
+U | http://stg-atrapi-search301z.stg.jp.local/search/v3/ota/OTAHotelAvailRQ.do
+RH | Host:api-search.travel.stg.jp.local,Content-Type:application/xml
+RP | apiClientId=rakutentravel_ota_test
+RB | <?xml version="1.0" encoding="utf-8" ?><OTA_HotelSearchRQ xmlns="http://www.opentravel.org/OTA/2003/05" EchoToken="ABC123" TimeStamp="2014-08-20T19:00:00" PrimaryLangID="ja_JP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 ../Schemas/OTA_HotelAvailRQ.xsd" Version="1"><Criteria>	<Criterion>		<Position Latitude="0" Longitude="0" />		<Radius Distance="100" UnitOfMeasureCode="2" />		<StayDateRange Start="yyyy-MM-dd" End="yyyy-MM-dd"/>		<RoomStayCandidates>			<RoomStayCandidate Quantity="2">				<GuestCounts>					<GuestCount Age="20" Count="2"/>					<GuestCount Age="10" Count="2"/>					<GuestCount Age="8" Count="2"/>					<GuestCount Age="2" Count="4"/>				</GuestCounts>			</RoomStayCandidate>		</RoomStayCandidates>		<TPA_Extensions>			<InfantOption RequirementType="1" Count="1"/>			<InfantOption RequirementType="2" Count="1"/>			<InfantOption RequirementType="3" Count="1"/>	 </TPA_Extensions></Criterion></Criteria></OTA_HotelSearchRQ>
+
+END
+
+ERRORCODES | SY001,SY002,EDAJ0001,EDAJ0002,EDAJ0003,EDAJ0004,ETAJ000
+
+
