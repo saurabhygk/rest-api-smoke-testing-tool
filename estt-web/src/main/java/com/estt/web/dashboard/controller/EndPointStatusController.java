@@ -35,13 +35,19 @@ public class EndPointStatusController {
 	private static final String STATUS_FILE_NAME = "status";
 
 	@RequestMapping(value = "/endpointsStatusCount", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Map<String, Integer>> getEpStatusForPieChart(@RequestParam("userId") String userId) {
+	public ResponseEntity<Map<String, Object>> getEpStatusForPieChart(@RequestParam("userId") String userId) {
 		
-		Map<String, Integer> responseMap = new HashMap<String, Integer>();
+		Map<String, Object> responseMap = new HashMap<String, Object>();
 		
 		responseMap.put("EC", redisHelper.getValue(userId.concat("-EC")));
 		responseMap.put("SC", redisHelper.getValue(userId.concat("-SC")));
 		responseMap.put("status", redisHelper.getValue(userId.concat("-STATUS"))); // status code : 0-Started, 1-Finished, 2-Error
+		String fileName = STATUS_FILE_NAME.concat("_").concat(userId).concat(".txt");
+		String statusFilePathWithNameForUserId = statusFilePath.concat("/").concat(fileName);
+		File fileStatus = new File(statusFilePathWithNameForUserId);
+		if (fileStatus.exists()) {
+			responseMap.put("statusFile", statusFilePathWithNameForUserId);
+		}
 		return ResponseEntity.ok(responseMap);
 	}
 	

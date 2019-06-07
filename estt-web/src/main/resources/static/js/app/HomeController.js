@@ -19,7 +19,6 @@ module.controller("HomeController", function($scope, $window) {
 	
 	$scope.formData = {}
 	  $scope.serialize = function($event){
-	    console.log($scope.formData)
 	    //this.formDataStore.push($scope.formData);
 	    alert(JSON.stringify($scope.formData))
 	    $event.preventDefault()

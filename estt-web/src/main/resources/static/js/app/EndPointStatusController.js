@@ -20,20 +20,24 @@ module.controller("EndPointStatusController", function($scope,  $interval, $wind
 		document.getElementById("userId").innerHTML = userId;
 		
 		EndPointStatusService.getEpStatusForPieChart(userId).then(function(value) {
-			console.log(value.data);
-			console.log(value.data.length);
 					if (value.data.length == 0) {
 						cancelInterval();
 					}
 					$scope.noDatafound = 0;
 					const json = JSON.stringify(value.data) || {};
-					const { EC, SC, status } = JSON.parse(json);
+					const { EC, SC, status, statusFile} = JSON.parse(json);
 					$scope.status = status;
 					statusGlobal =  status;
 					console.log(EC);
 					console.log(SC);
 					console.log(status);
-					if(EC === null && SC === null && status == null) {
+					console.log(statusFile);
+					if (EC === null && SC === null && status == null && typeof statusFile !== 'undefined' && statusFile !== null) {
+						$scope.status = 3;
+						$scope.noDatafound = 2;
+						$scope.statusFile = statusFile;
+						cancelInterval();
+					} else if(EC === null && SC === null && status == null) {
 						$scope.noDatafound = 1;
 						//$scope.labels = ["NO DATA FOUND FOR USER ID"];
 						//$scope.data = [userId];
