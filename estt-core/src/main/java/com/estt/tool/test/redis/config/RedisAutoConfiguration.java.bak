@@ -32,10 +32,7 @@ public class RedisAutoConfiguration {
 	 */
 	@Bean("defaultRedisTemplate")
 	public <T> RedisTemplate<String, T> redisTemplate(RedisConnectionFactory connectionFactory) {
-		JedisConnectionFactory jedisConnectionFactory = jedisConnectionFactory();
-		if (null == jedisConnectionFactory) {
-			return null;
-		}
+
 		final RedisTemplate<String, T> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setConnectionFactory(jedisConnectionFactory());
 		redisTemplate.setKeySerializer(new StringRedisSerializer());
@@ -51,12 +48,8 @@ public class RedisAutoConfiguration {
 	@Bean
 	JedisConnectionFactory jedisConnectionFactory() {
 		// TODO: currently hard coded host and port wiil be read from properties
-		try {
-			RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(redisHost, redisPort);
-		    return new JedisConnectionFactory(config);
-		} catch(Exception ex) {
-			return null;
-		}
+		RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(redisHost, redisPort);
+	    return new JedisConnectionFactory(config);
 	}
 
 }

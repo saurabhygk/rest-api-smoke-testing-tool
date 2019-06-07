@@ -5,3 +5,4 @@ redis.host=localhost
 redis.port=6379
 
 status.file.location=C:\\Project\\Personal\\backup_saurabh.yagnik_folder\\backup_saurabh.yagnik_folder\\IdeaProjects\\endpoint-smoketest-tool-master\\conf
+status.file.name=status.txt

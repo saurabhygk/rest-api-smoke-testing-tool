@@ -20,7 +20,7 @@ body {
         <br />
         <br />
         <input type="button" value="Show Real Time Progress" ng-click="displayProgressOfInitaitedUser()" />
-        <!-- <input type="button" value="Create config File" ng-click="createEsstConfigFile()" /> --> <!-- TODO: Not implemented but plan to implement currently we have command line interface which is helping to create configuration file for testing   -->
+        <!-- <input type="button" value="Create Config File" ng-click="createEsstConfigFile()" /> -->
     </div>
 </body>
 <script src="js/lib/angular.min.js"></script>

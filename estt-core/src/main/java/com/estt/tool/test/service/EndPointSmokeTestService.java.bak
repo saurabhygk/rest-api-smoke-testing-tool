@@ -32,7 +32,7 @@ import com.estt.tool.test.validator.ResponseValidator;
 public class EndPointSmokeTestService {
 
 	// static values initialization of for files
-	private static final String STATUS_FILE_NAME = "/status";
+	private static final String STATUS_FILE_NAME = "/status.txt";
 
 	private static final String ENDPOINT_CONFIG = "EndPointConfig";
 
@@ -58,7 +58,7 @@ public class EndPointSmokeTestService {
 
 	public void testEndPoints(String... arguments) throws Exception {
 		boolean noConfigFilePresent = false;
-		String statusFileName = arguments[0].concat(STATUS_FILE_NAME.concat("_").concat(arguments[1]).concat(".txt"));
+		String statusFileName = arguments[0].concat(STATUS_FILE_NAME);
 		Map<String, String> filesWithValues = listFilesForFolder(arguments[0]);
 		if (filesWithValues.size() == 0) {
 			noConfigFilePresent = true;
@@ -101,7 +101,7 @@ public class EndPointSmokeTestService {
 		List<String> headersList = null;
 		String url = "";
 		for (EndPointConfig endPoint : endPoints) {
-			redisStoreOperation(userId.concat("-STATUS"), 0);
+			redisHelper.putValueWithExpireTime(userId.concat("-STATUS"), 0, 15, TimeUnit.MINUTES);
 			try {
 				headersList = new ArrayList<String>();
 				if (null == endPoint) {
@@ -126,14 +126,13 @@ public class EndPointSmokeTestService {
 
 					if (null == endPointResponse && !StringUtils.isEmpty(endPoint.getExpectedResponse())) {
 						errorCount++;
-						redisStoreOperation(userId.concat("-EC"), errorCount);
-						
+						redisHelper.putValueWithExpireTime(userId.concat("-EC"), errorCount, 15, TimeUnit.MINUTES);
 						statusLines.add("ERROR ->[".concat(url).concat("] has returned").concat(
 								" null response where there is expected response configured in config file. Either change config file or check your API response"));
 					} else if (null == endPointResponse && StringUtils.isEmpty(endPoint.getExpectedResponse())) {
 						statusLines.add("SUCCESS ->[".concat(url).concat("] executed successfully."));
 						successCount++;
-						redisStoreOperation(userId.concat("-SC"), successCount);
+						redisHelper.putValueWithExpireTime(userId.concat("-SC"), successCount, 15, TimeUnit.MINUTES);
 					} else {
 						String responseCode = endPointResponse.getStatusCode();
 						if (null != responseCode && !responseCode
@@ -143,7 +142,7 @@ public class EndPointSmokeTestService {
 											.concat("] which is different than expected response code: ")
 											.concat(endPointConfigParameters.get("expectedResponseCode")));
 							errorCount++;
-							redisStoreOperation(userId.concat("-EC"), errorCount);
+							redisHelper.putValueWithExpireTime(userId.concat("-EC"), errorCount, 15, TimeUnit.MINUTES);
 						} else {
 							statusLines.add(processResponseEntity(endPointConfigParameters.get("url"), endPointResponse,
 									errorCodes, endPoint.getExpectedResponse(), userId));
@@ -153,7 +152,7 @@ public class EndPointSmokeTestService {
 					statusLines.add("ERROR ->[".concat(url).concat("] thrown an exception: [")
 							.concat(e != null ? e.getMessage() : "EXCEPTION").concat("]"));
 					errorCount++;
-					redisStoreOperation(userId.concat("-EC"), errorCount);
+					redisHelper.putValueWithExpireTime(userId.concat("-EC"), errorCount, 15, TimeUnit.MINUTES);
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -164,15 +163,7 @@ public class EndPointSmokeTestService {
 		if (CollectionUtils.isNotEmpty(statusLines)) {
 			Utility.writeFile(statusFileDirPath, statusLines);
 		}
-		redisStoreOperation(userId.concat("-STATUS"), 1);
-	}
-
-	private void redisStoreOperation(String key, Integer value) {
-		try {
-			redisHelper.putValueWithExpireTime(key, value, 15, TimeUnit.MINUTES);
-		} catch (Exception e) {
-			// do nothing
-		}
+		redisHelper.putValueWithExpireTime(userId.concat("-STATUS"), 1, 15, TimeUnit.MINUTES);
 	}
 
 	/**
@@ -192,25 +183,21 @@ public class EndPointSmokeTestService {
 
 		if (errorCodes.contains(message)) {
 			errorCount++;
-			redisStoreOperation(userId.concat("-EC"), errorCount);
-			
+			redisHelper.putValueWithExpireTime(userId.concat("-EC"), errorCount, 15, TimeUnit.MINUTES);
 			return "ERROR ->[".concat(url).concat("] has returned ").concat("error response code:\"").concat(message)
 					.concat("\", please check your API for more error check.");
 		} else if (null != message && "INVALID".equalsIgnoreCase(message) && !StringUtils.isEmpty(expectedResponse)) {
 			errorCount++;
-			redisStoreOperation(userId.concat("-EC"), errorCount);
-			
+			redisHelper.putValueWithExpireTime(userId.concat("-EC"), errorCount, 15, TimeUnit.MINUTES);
 			return "ERROR ->[".concat(url).concat("] has returned ").concat("different response then expected")
 					.concat(", please check your API for more error check.");
 		} else if (null != message && "INVALID".equalsIgnoreCase(message) && StringUtils.isEmpty(expectedResponse)) {
 			errorCount++;
-			redisStoreOperation(userId.concat("-EC"), errorCount);
-			
+			redisHelper.putValueWithExpireTime(userId.concat("-EC"), errorCount, 15, TimeUnit.MINUTES);
 			return "ERROR ->[".concat(url).concat("] having some error, please check your API log.");
 		} else {
 			successCount++;
-			redisStoreOperation(userId.concat("-SC"), successCount);
-			
+			redisHelper.putValueWithExpireTime(userId.concat("-SC"), successCount, 15, TimeUnit.MINUTES);
 			return "SUCCESS ->[".concat(url).concat("] executed successfully and matched with expected configuration.");
 		}
 	}

@@ -32,7 +32,8 @@ public class EndPointStatusController {
 	@Value("${status.file.location}")
 	private String statusFilePath;
 	
-	private static final String STATUS_FILE_NAME = "status";
+	@Value("${status.file.name}")
+	private String statusFileName;
 
 	@RequestMapping(value = "/endpointsStatusCount", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Map<String, Integer>> getEpStatusForPieChart(@RequestParam("userId") String userId) {
@@ -46,25 +47,25 @@ public class EndPointStatusController {
 	}
 	
 	@RequestMapping(value = "/listStatusDetails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<EndPointStatusDto>> listStatus(@RequestParam(required = false, name="status") String status, @RequestParam("userId") String userId) throws IOException {
+	public ResponseEntity<List<EndPointStatusDto>> listStatus(@RequestParam(required = false, name="status") String status) throws IOException {
 	   List<EndPointStatusDto> response = new ArrayList<EndPointStatusDto>();
-	   String fileName = STATUS_FILE_NAME.concat("_").concat(userId).concat(".txt");
-	   String statusFilePathWithNameForUserId = statusFilePath.concat("/").concat(fileName);
-	   File fileStatus = new File(statusFilePathWithNameForUserId);
+	   File fileStatus = new File(statusFilePath.concat("/").concat(statusFileName));
 		if (fileStatus.exists()) {
-			List<String> lines = Files.readAllLines(Paths.get(statusFilePathWithNameForUserId));
+			List<String> lines = Files.readAllLines(Paths.get(statusFilePath.concat("/").concat(statusFileName)));
 			for(String line : lines) {
 				String[] splitMsg = line.split("\\->");
 				String statusOfUrl = splitMsg[0].trim();
 				String url = splitMsg[1].trim().substring(splitMsg[1].trim().indexOf("[") + 1, splitMsg[1].trim().indexOf("]"));
 				EndPointStatusDto endPointStatusDto = new EndPointStatusDto(statusOfUrl, url, splitMsg[1].trim().substring(splitMsg[1].trim().indexOf("]") + 1, splitMsg[1].trim().length()));
-				if ((!StringUtils.isEmpty(status) && status.equalsIgnoreCase(statusOfUrl)) 
-						|| (StringUtils.isEmpty(status) || "null".equalsIgnoreCase(status))) {
+				if (!StringUtils.isEmpty(status) && status.equalsIgnoreCase(statusOfUrl)) {
+					response.add(endPointStatusDto);
+				} 
+				if(StringUtils.isEmpty(status) || "null".equalsIgnoreCase(status)) {
 					response.add(endPointStatusDto);
 				}
 			}
 		} else {
-			throw new IOException("Status file with name {"+ fileName +" } not exists at location : {" + statusFilePath + "}");
+			throw new IOException("Status file with name {"+ statusFileName +" } not exists at location : {" + statusFilePath + "}");
 		}
 		return ResponseEntity.ok(response);
 	}

@@ -4,10 +4,9 @@ var module = angular.module('dashboard.controllers', []);
 module.controller("StatusDetailController", function($scope, $filter,
 		StatusDetailService) {
 	var status = localStorage.getItem("status");
-	var userId = localStorage.getItem("userId");
 	$scope.curPage = 1, $scope.itemsPerPage = 3, $scope.maxSize = 5;
 	var items = [];
-	StatusDetailService.listStatusDetails(status, userId).then(function(value) {
+	StatusDetailService.listStatusDetails(status).then(function(value) {
 		if (value.data.length == 0) {
 		}
 		
