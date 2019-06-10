@@ -32,12 +32,13 @@ module.controller("EndPointStatusController", function($scope,  $interval, $wind
 					console.log(SC);
 					console.log(status);
 					console.log(statusFile);
-					if (EC === null && SC === null && status == null && typeof statusFile !== 'undefined' && statusFile !== null) {
+					/*if (EC === null && SC === null && status == null && typeof statusFile !== 'undefined' && statusFile !== null) {
 						$scope.status = 3;
 						$scope.noDatafound = 2;
 						$scope.statusFile = statusFile;
 						cancelInterval();
-					} else if(EC === null && SC === null && status == null) {
+					} else*/ 
+					if(EC === null && SC === null && status == null) {
 						$scope.noDatafound = 1;
 						//$scope.labels = ["NO DATA FOUND FOR USER ID"];
 						//$scope.data = [userId];
@@ -72,6 +73,9 @@ module.controller("EndPointStatusController", function($scope,  $interval, $wind
 							$scope.series= [SC, EC];
 						}
 						if (status === 1){
+							$scope.status = 3;
+							$scope.fileCreated = 1;
+							$scope.statusFile = statusFile;
 							cancelInterval();
 						}
 					}

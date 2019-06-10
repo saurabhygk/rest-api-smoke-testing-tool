@@ -14,6 +14,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -46,6 +47,9 @@ public class EndPointSmokeTestService {
 	// chart
 	Integer successCount = 0;
 	Integer errorCount = 0;
+	
+	@Value("${redis.key.timeout:1}")
+	private Integer redisKeyTimout;
 
 	@Autowired
 	private ResponseValidator responseValidator;
@@ -169,7 +173,7 @@ public class EndPointSmokeTestService {
 
 	private void redisStoreOperation(String key, Integer value) {
 		try {
-			redisHelper.putValueWithExpireTime(key, value, 15, TimeUnit.MINUTES);
+			redisHelper.putValueWithExpireTime(key, value, redisKeyTimout, TimeUnit.DAYS);
 		} catch (Exception e) {
 			// do nothing
 		}
