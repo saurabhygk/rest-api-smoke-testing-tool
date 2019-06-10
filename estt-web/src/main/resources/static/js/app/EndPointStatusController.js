@@ -32,16 +32,8 @@ module.controller("EndPointStatusController", function($scope,  $interval, $wind
 					console.log(SC);
 					console.log(status);
 					console.log(statusFile);
-					/*if (EC === null && SC === null && status == null && typeof statusFile !== 'undefined' && statusFile !== null) {
-						$scope.status = 3;
-						$scope.noDatafound = 2;
-						$scope.statusFile = statusFile;
-						cancelInterval();
-					} else*/ 
 					if(EC === null && SC === null && status == null) {
 						$scope.noDatafound = 1;
-						//$scope.labels = ["NO DATA FOUND FOR USER ID"];
-						//$scope.data = [userId];
 						// intentionally not cancelled interval. As some user initiated process and would like to view progress and may be it will take some time to be displayed.
 					} else {
 						$scope.options={
@@ -105,10 +97,6 @@ module.controller("EndPointStatusController", function($scope,  $interval, $wind
 		 	var url = "http://" + $window.location.host + "/listStatusDetails";
 	         $window.location.href = url;
 		 	// TODO: without pagination table, need to solve issue of pagination
-	     }/* else {
-	    	 localStorage.getItem("status", "");
-	    	 var url = "http://" + $window.location.host + "/listStatusDetails";
-	         $window.location.href = url;
-	     }*/
+	     }
 	 }
 });
