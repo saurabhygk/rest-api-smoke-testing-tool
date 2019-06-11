@@ -74,4 +74,21 @@ public class EndPointStatusController {
 		}
 		return ResponseEntity.ok(response);
 	}
+	
+	@RequestMapping(value = "/deleteStatusFile", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<EndPointStatusDto>> deleteStatusFile(@RequestParam("userId") String userId) throws IOException {
+	   List<EndPointStatusDto> response = new ArrayList<EndPointStatusDto>();
+	   String fileName = STATUS_FILE_NAME.concat("_").concat(userId).concat(".txt");
+	   String statusFilePathWithNameForUserId = statusFilePath.concat("/").concat(fileName);
+	   File statusFile = new File(statusFilePathWithNameForUserId);
+		if (statusFile.exists()) {
+			statusFile.delete();
+			redisHelper.deleteKey(userId.concat("-EC"));
+			redisHelper.deleteKey(userId.concat("-SC"));
+			redisHelper.deleteKey(userId.concat("-STATUS"));
+		} else {
+			throw new IOException("Status file with name {"+ fileName +" } not exists at location : {" + statusFilePath + "}");
+		}
+		return ResponseEntity.ok(response);
+	}
 }

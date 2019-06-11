@@ -6,12 +6,12 @@ public class EndPointStatusDto {
 
 	private String status;
 
-	private String error;
+	private String description;
 
-	public EndPointStatusDto(String url, String status, String error) {
+	public EndPointStatusDto(String url, String status, String description) {
 		this.url = url;
 		this.status = status;
-		this.error = error;
+		this.description = description;
 	}
 
 	public String getUrl() {
@@ -30,12 +30,12 @@ public class EndPointStatusDto {
 		this.status = status;
 	}
 
-	public String getError() {
-		return error;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setError(String error) {
-		this.error = error;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

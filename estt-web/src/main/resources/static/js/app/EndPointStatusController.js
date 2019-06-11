@@ -14,6 +14,20 @@ module.controller("EndPointStatusController", function($scope,  $interval, $wind
 		var url = "http://" + $window.location.host;
         $window.location.href = url;
 	}
+	
+	$scope.deleteStatusFile = function() {
+		if (confirm("Do you want to delete status, which deletes status file permanently?") == true) {
+			EndPointStatusService.deleteStatusFile(userId).then(function(value) {
+				var url = "http://" + $window.location.host;
+		        $window.location.href = url;
+			}, function(reason) {
+				console.log("error occured --> "+reason);
+				$scope.status = 2;
+			}, function(value) {
+				console.log("no callback");
+			});
+		}
+	}
 	var userId ;
 	$scope.callAtInterval = function() {
 		userId = localStorage.getItem("userId");
