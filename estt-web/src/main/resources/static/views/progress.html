@@ -14,32 +14,27 @@ body {
 <h2 align="center" style="display: block;font-weight: bold;">Smoke Testing Progress for User : <span id="userId"></span> </h2>
 <hr/>
 <div style= "border:1px solid black;" class="container" ng-controller="EndPointStatusController" data-ng-init="callAtInterval()">
-	<div ng-switch on="status">
+	<div align="center" ng-switch on="status">
       <div ng-switch-when="0">
-      	<h3 align="center" style="color: orange;">In Progress..!!</h3>
+      	<h3 style="color: orange;">In Progress..!!</h3>
       </div>
       <div ng-switch-when="1">
-      	<h3 align="center" style="color: green;">Finished..!!</h3>
+      	<h3 style="color: green;">Finished..!!</h3>
       </div>
       <div ng-switch-when="2">
-      	<h3 align="center" style="color: red;">Error..!!</h3>
+      	<h3 style="color: red;">Error..!!</h3>
       </div>
-      <!-- <div ng-switch-when="3">
-      	<h3 align="center" style="color: gray;">Status file exists at following location: </h3>
-      </div> -->
     </div>
 	<canvas ng-if="noDatafound == 0" id="pieChart" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="colours" chart-click="onclick"></canvas>
-	<div ng-if="fileCreated == 1">
-      	<h3 align="center" style="color: gray;">Status file created at following location: </h3>
-      	<p align="center" style="color: bold;"><span style="color: red; font-family: cursive;">{{statusFile}}</span></p>
+	<div ng-if="fileCreated == 1" align="center">
+      	<h3 style="color: gray;">Status file created at following location: </h3>
+      	<p style="color: bold;"><span style="color: red; font-family: cursive;">{{statusFile}}</span></p>
+      	<input type="button" value="Delete Status File" ng-click="deleteStatusFile()" />
     </div>
-	<div ng-if="noDatafound == 1">
-		<p align="center" style="color: bold;">No Data Found. Synchronization of data running</p>
-		 <input align="center" type="button" value="Stop Synch" ng-click="abortSynch()" />
+	<div ng-if="noDatafound == 1" align="center">
+		<p align="center" style="color: bold;">No Data Found. Synchronization of data running.</p>
+		<input align="center" type="button" value="Stop Synch" ng-click="abortSynch()"/>
 	</div>
-	<!-- <div ng-if="noDatafound == 2">
-		<p align="center" style="color: bold;"><span style="color: red; font-family: cursive;">{{statusFile}}</span></p>
-	</div> -->
 </div>
 
 </body>
