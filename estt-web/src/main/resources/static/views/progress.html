@@ -26,10 +26,18 @@ body {
       </div>
     </div>
 	<canvas ng-if="noDatafound == 0" id="pieChart" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="colours" chart-click="onclick"></canvas>
+<<<<<<< HEAD
 	<div ng-if="fileCreated == 1" align="center">
       	<h3 style="color: gray;">Status file created at following location: </h3>
       	<p style="color: bold;"><span style="color: red; font-family: cursive;">{{statusFile}}</span></p>
       	<input type="button" value="Delete Status File" ng-click="deleteStatusFile()" />
+=======
+	<div ng-if="fileCreated == 1">
+      	<h3 align="center" style="color: gray;">Status file created at following location: </h3>
+      	<div align="center"><p align="center" style="color: bold;"><span style="color: red; font-family: cursive;">{{statusFile}}</span></p>
+      	<input align="center" type="button" value="Delete Status File" ng-click="deleteStatusFile()" />
+      	</div>
+>>>>>>> branch 'master' of https://github.com/saurabhygk/rest-api-smoke-testing-tool.git
     </div>
 	<div ng-if="noDatafound == 1" align="center">
 		<p align="center" style="color: bold;">No Data Found. Synchronization of data running.</p>
