@@ -50,6 +50,9 @@ public class EndPointSmokeTestService {
 	
 	@Value("${redis.key.timeout:1}")
 	private Integer redisKeyTimout;
+	
+	@Value("${redis.key.timeUnit:DAYS}")
+	String timeUnit;
 
 	@Autowired
 	private ResponseValidator responseValidator;
@@ -173,7 +176,7 @@ public class EndPointSmokeTestService {
 
 	private void redisStoreOperation(String key, Integer value) {
 		try {
-			redisHelper.putValueWithExpireTime(key, value, redisKeyTimout, TimeUnit.DAYS);
+			redisHelper.putValueWithExpireTime(key, value, redisKeyTimout, TimeUnit.valueOf(timeUnit));
 		} catch (Exception e) {
 			// do nothing
 		}
