@@ -1,10 +1,17 @@
 SQ| 1
 M | POST
-U | http://localhost:8080/asp-auth/ack/read
+U | http://localhost:8080/auth/request
 RH | Content-Type:application/json
-RB | {"ack": "1","ackType": "string","additionalData": "string","certId": "string","deviceId": "string","messageId": "string","messageType": "string","ts": "string","userId": "string"}
+RB | {"data": "1"}
 ERC | 200
-ER | Read Ack processed successfully
+ER | successfully
+
+SQ| 2
+M | POST
+U | http://localhost:8080/user/{userId}/detail
+RH | Content-Type:application/json
+RP | userId=123
+ERC | 200
 
 ENDOFREAD
 
