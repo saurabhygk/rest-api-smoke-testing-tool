@@ -34,7 +34,7 @@ public class EndPointStatusController {
 		responseMap.put("EC", redisHelper.getValue(userId.concat("-EC")));
 		responseMap.put("SC", redisHelper.getValue(userId.concat("-SC")));
 		responseMap.put("status", redisHelper.getValue(userId.concat("-STATUS"))); // status code : 0-Started, 1-Finished, 2-Error
-		responseMap.put("statusFile", (String) redisHelper.getValue(userId.concat("-status-loc")));
+		responseMap.put("statusFile", (String) redisHelper.getValue(userId.concat("-STATUS_FILEPATH")));
 		return ResponseEntity.ok(responseMap);
 	}
 
@@ -42,7 +42,7 @@ public class EndPointStatusController {
 	@RequestMapping(value = "/listStatusDetails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<EndPointStatusDto>> listStatus(@RequestParam(required = false, name = "status") String status, @RequestParam("userId") String userId) throws Exception {
 		List<EndPointStatusDto> response = new ArrayList<EndPointStatusDto>();
-		List<String> statusDataList = (List<String>) redisHelper.getValue(userId.concat("-data"));
+		List<String> statusDataList = (List<String>) redisHelper.getValue(userId.concat("-DATA"));
 
 		if (!statusDataList.isEmpty()) {
 			for (String line : statusDataList) {
@@ -66,7 +66,7 @@ public class EndPointStatusController {
 	@RequestMapping(value = "/deleteStatusFile", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<EndPointStatusDto>> deleteStatusFile(@RequestParam("userId") String userId)
 			throws IOException {
-		String statusFilePath = (String) redisHelper.getValue(userId.concat("-status-loc"));
+		String statusFilePath = (String) redisHelper.getValue(userId.concat("-STATUS_FILEPATH"));
 		List<EndPointStatusDto> response = new ArrayList<EndPointStatusDto>();
 		File statusFile = new File(statusFilePath);
 		if (statusFile.exists()) {
@@ -74,8 +74,8 @@ public class EndPointStatusController {
 			redisHelper.deleteKey(userId.concat("-EC"));
 			redisHelper.deleteKey(userId.concat("-SC"));
 			redisHelper.deleteKey(userId.concat("-STATUS"));
-			redisHelper.deleteKey(userId.concat("-data"));
-			redisHelper.deleteKey(userId.concat("-status-loc"));
+			redisHelper.deleteKey(userId.concat("-DATA"));
+			redisHelper.deleteKey(userId.concat("-STATUS_FILEPATH"));
 		} else {
 			throw new IOException(statusFilePath + " not exists");
 		}

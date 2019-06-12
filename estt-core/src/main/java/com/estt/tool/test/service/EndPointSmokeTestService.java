@@ -171,8 +171,8 @@ public class EndPointSmokeTestService {
 		if (CollectionUtils.isNotEmpty(statusLines)) {
 			Utility.writeFile(statusFileDirPath, statusLines);
 		}
-		redisStoreOperation(userId.concat("-status-loc"), statusFileDirPath);
-		redisStoreOperation(userId.concat("-data"), statusLines);
+		redisStoreOperation(userId.concat("-STATUS_FILEPATH"), statusFileDirPath);
+		redisStoreOperation(userId.concat("-DATA"), statusLines);
 		redisStoreOperation(userId.concat("-STATUS"), 1);
 	}
 
