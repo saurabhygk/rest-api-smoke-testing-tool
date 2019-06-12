@@ -1,5 +1,5 @@
 # END POINT SMOKE TESTING TOOL - ESTT
-This project contains the different independent projects. Purpose behind development of this tool to do smoke testing of REST APIs before releasing final version of your APIs. This module you can do smoke testing manually or you can integrate with your DevOps CI/CD pipeline. I will describe each projects and their usage. As well as I will also describe how you can setup or integrate with DevOps CI/CD pipeline. 
+This project contains the different independent projects. Purpose behind development of this tool to do smoke testing of REST APIs before releasing final version of your APIs. By using projects, you can make configuration files for you API end points and performs smoke testing manually or you can integrate with your DevOps CI/CD pipeline. This project is same like doing manual postman API call instead here you just have to maintain all end point configuration (WRITE ONCE AND TEST MANY TIME IN EACH ITERATION OF RELEASE). I will describe each projects and their usage. As well as I will also describe how you can setup or integrate with DevOps CI/CD pipeline. 
 
 # Technical stack 
 To develop all project for ESTT, I have used following technologies
@@ -244,6 +244,20 @@ redis.key.timeout=7
 redis.key.timeUnit=DAYS
 ```
 Third property value indicates the key:value will be exist into cache till 7 days on storage. You can reduce as per your requirement. In fourth property you can provide option like `MINUTES,HOURS, SECONDS, DAYS` to keep key:value into redis cache. If you don't provide time unit then it will consider by default DAYS. For example if you have provided redis.key.timeout=7 and  redis.key.timeUnit=HOURS then key will be stored in cache for 7 hours and automatically will be deleted by redis. if you don't provide `redis.key.timeUnit` value then program will store key:value for 7 days.
+
+### CI/CD integeration
+If your release using CI CD deployment as part of your project release. If you have pre prod environment and before release to production environment you want to test all end points then you can utlize this tool and integrate with your pipeline job. I have also provided batch scripts to call executable jar file (endpoint-smoketest-tool.jar). For this you have to perform following steps:
+
+1. Copy Jar file in your CI CD server. (Make sure Java1.8 or above installed)
+2. Copy Configuration files at some location (EndPointConfig.json and ErrorCodes.properties)
+3. Copy "chkSmokeTestStatus.sh" from project directory (estt-test-tool\devops\) to CI/CD server
+4. After all above steps, integrate one more stage and copy following command as per configuration of your server. Give executation access to shell script for your user
+```
+./chkSmokeTestStatus.sh <<location_of_executable_jar>> <<location_of_configuration_files>> <<user_id>>
+```
+1. First arg: Location of executable endpoint-smoketest-tool.jar
+2. Second arg: Locatoon of configuration files (EndPointConfig.json and ErrorCodes.properties location)
+3. Third arg: User Id to mention who has started smoke testing.
 
 ## 3. ESST Dashboard (estt-dashboard)
 
