@@ -108,14 +108,14 @@ public class EndPointConfigCreatorByCommandLine {
 				}
 			}
 			
-			System.out.println("Please provide Exptected Response Code [OPTIONAL]:");
+			System.out.println("Please provide Expected Response Code [OPTIONAL]:");
 			String expectedResponseCode = bufferedReader.readLine();
 			if(StringUtils.isNotEmpty(expectedResponseCode)) {
 				sbEndPoints.append(",");
 				sbEndPoints.append("\"expectedResponseCode\":" + "\"" + expectedResponseCode + "\"");
 			}
 			
-			System.out.println("Please provide Exptected Response to be match with returned response [OPTIONAL]:");
+			System.out.println("Please provide Expected Response to be match with returned response [OPTIONAL]:");
 			String expectedResponse = bufferedReader.readLine();
 			if(StringUtils.isNotEmpty(expectedResponse)) {
 				sbEndPoints.append(",");
