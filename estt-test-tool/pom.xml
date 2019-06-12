@@ -20,7 +20,7 @@
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<start-class>com.smoke.test.MainApplication</start-class>
+		<start-class>com.estt.tool.test.MainApplication</start-class>
 		<commons-io.version>2.4</commons-io.version>
 		<commons-lang.version>3.4</commons-lang.version>
 	</properties>
