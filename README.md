@@ -251,12 +251,12 @@ If your release using CI CD deployment as part of your project release. If you h
 1. Copy Jar file in your CI CD server. (Make sure Java1.8 or above installed)
 2. Copy Configuration files at some location (EndPointConfig.json and ErrorCodes.properties)
 3. Copy "chkSmokeTestStatus.sh" from project directory (estt-test-tool\devops\) to CI/CD server
-4. After all above steps, integrate one more stage and copy following command as per configuration of your server. Give executation access to shell script for your user
+4. After all above steps, integrate one more stage in your CI/CD pipeline and copy following command as per configuration of your server. Give executation access to shell script for your user
 ```
 ./chkSmokeTestStatus.sh <<location_of_executable_jar>> <<location_of_configuration_files>> <<user_id>>
 ```
 1. First arg: Location of executable endpoint-smoketest-tool.jar
-2. Second arg: Locatoon of configuration files (EndPointConfig.json and ErrorCodes.properties location)
+2. Second arg: Location of configuration files (EndPointConfig.json and ErrorCodes.properties location)
 3. Third arg: User Id to mention who has started smoke testing.
 
 ## 3. ESST Dashboard (estt-dashboard)
@@ -279,9 +279,6 @@ spring.mvc.view.suffix = .html
 
 redis.host=<<host>>
 redis.port=<<port>>
-
-status.file.location=<<expected_location_of_status_file>>
-
 ```
 
 2. Execute following command, which generates the executable jar file.
@@ -298,10 +295,10 @@ project_directory> java -jar target\estt-dashboard-0.0.1-SNAPSHOT.jar
 
 Once application started successfully, check in your browser by `http:\\localhost:8080`. Render the home page and asking for user id to check real time progress or completed process:
 
-If redis service not started then web application will throw exception. So be sure that download redis if you it is not installed on your VM or local machine and start redis service. 
+If redis service not started then web application will throw exception.  Make sure, redis is downloaded in your VM or local machine. First download from given reference and start the service.
 
-
-# I WILL PROVIDE MORE DETAIL ON DASHBOARD
+###### Reference to download Redis
+https://redis.io/download
 
  
 
