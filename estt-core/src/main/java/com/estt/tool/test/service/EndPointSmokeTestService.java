@@ -61,7 +61,7 @@ public class EndPointSmokeTestService {
 	private ConsumeEndPointLogic consumeEndPoint;
 	
 	@Autowired
-	private BaseRedisHelper<Integer> redisHelper;
+	private BaseRedisHelper<Object> redisHelper;
 
 	public void testEndPoints(String... arguments) throws Exception {
 		boolean noConfigFilePresent = false;
@@ -171,10 +171,12 @@ public class EndPointSmokeTestService {
 		if (CollectionUtils.isNotEmpty(statusLines)) {
 			Utility.writeFile(statusFileDirPath, statusLines);
 		}
+		redisStoreOperation(userId.concat("-status-loc"), statusFileDirPath);
+		redisStoreOperation(userId.concat("-data"), statusLines);
 		redisStoreOperation(userId.concat("-STATUS"), 1);
 	}
 
-	private void redisStoreOperation(String key, Integer value) {
+	private void redisStoreOperation(String key, Object value) {
 		try {
 			redisHelper.putValueWithExpireTime(key, value, redisKeyTimout, TimeUnit.valueOf(timeUnit));
 		} catch (Exception e) {
