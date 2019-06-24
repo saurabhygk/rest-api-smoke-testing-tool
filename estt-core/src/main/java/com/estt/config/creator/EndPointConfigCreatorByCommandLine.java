@@ -81,7 +81,7 @@ public class EndPointConfigCreatorByCommandLine {
 			if (!"GET".equalsIgnoreCase(methodType)) {
 				System.out.println("Please provide Request Body, if not giving next option please provide double enter:");
 				StringBuffer requestBody = new StringBuffer();
-				int ch = 0;
+				//int ch = 0;
 				String line = "";
 				
 				while((line = bufferedReader.readLine()) != null || (line = bufferedReader.readLine()) == null) {
@@ -89,7 +89,6 @@ public class EndPointConfigCreatorByCommandLine {
 						break;
 					}
 					String[] tokens = line.split("\\s");
-					//System.out.println(Arrays.toString(tokens));
 					for(String token : tokens) {
 						requestBody.append(token);
 					}
@@ -150,6 +149,7 @@ public class EndPointConfigCreatorByCommandLine {
 		}
 
 	}
+	
 	private static void closeReader(BufferedReader bufferedReader) throws IOException{
 		if(null != bufferedReader){
 			bufferedReader.close();
