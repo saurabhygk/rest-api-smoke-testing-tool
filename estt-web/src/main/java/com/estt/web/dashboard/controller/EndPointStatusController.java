@@ -33,14 +33,17 @@ public class EndPointStatusController {
 
 		responseMap.put("EC", redisHelper.getValue(userId.concat("-EC")));
 		responseMap.put("SC", redisHelper.getValue(userId.concat("-SC")));
-		responseMap.put("status", redisHelper.getValue(userId.concat("-STATUS"))); // status code : 0-Started, 1-Finished, 2-Error
+		responseMap.put("status", redisHelper.getValue(userId.concat("-STATUS"))); // status code : 0-Started,
+																					// 1-Finished, 2-Error
 		responseMap.put("statusFile", (String) redisHelper.getValue(userId.concat("-STATUS_FILEPATH")));
 		return ResponseEntity.ok(responseMap);
 	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/listStatusDetails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<EndPointStatusDto>> listStatus(@RequestParam(required = false, name = "status") String status, @RequestParam("userId") String userId) throws Exception {
+	public ResponseEntity<List<EndPointStatusDto>> listStatus(
+			@RequestParam(required = false, name = "status") String status, @RequestParam("userId") String userId)
+			throws Exception {
 		List<EndPointStatusDto> response = new ArrayList<EndPointStatusDto>();
 		List<String> statusDataList = (List<String>) redisHelper.getValue(userId.concat("-DATA"));
 

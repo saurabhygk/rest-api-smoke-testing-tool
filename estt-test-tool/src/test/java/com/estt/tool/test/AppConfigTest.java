@@ -7,6 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
  * Created by saurabh.yagnik on 2016/10/13.
  */
 @Configuration
-@ContextConfiguration(locations={"classpath:**/applicationContext-test.xml"})
+@ContextConfiguration(locations = { "classpath:**/applicationContext-test.xml" })
 public class AppConfigTest {
 }

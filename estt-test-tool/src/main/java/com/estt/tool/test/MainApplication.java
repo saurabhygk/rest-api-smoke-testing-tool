@@ -23,7 +23,7 @@ import com.estt.tool.test.service.EndPointSmokeTestService;
  */
 @Component
 public class MainApplication {
-	
+
 	// variables for piechart render
 	private PieChart pieChart;
 
@@ -34,8 +34,10 @@ public class MainApplication {
 	 * This is the main entry point for end point smoke test tool, accepts two
 	 * argument
 	 * 
-	 * @param args: args[0] : configuration file directory path, args[1]: mandatory field, pass userid to track and fetch data who initiated process,
-	 * 			 args[2] : value must be "piechart" optional to check real time pie chart
+	 * @param args: args[0] : configuration file directory path, args[1]: mandatory
+	 *              field, pass userid to track and fetch data who initiated
+	 *              process, args[2] : value must be "piechart" optional to check
+	 *              real time pie chart
 	 * @throws Exception : throws exception of arguments are not enough
 	 */
 	public static void main(String[] args) throws Exception {
