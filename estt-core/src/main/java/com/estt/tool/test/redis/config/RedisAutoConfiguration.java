@@ -53,8 +53,8 @@ public class RedisAutoConfiguration {
 		// TODO: currently hard coded host and port wiil be read from properties
 		try {
 			RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(redisHost, redisPort);
-		    return new JedisConnectionFactory(config);
-		} catch(Exception ex) {
+			return new JedisConnectionFactory(config);
+		} catch (Exception ex) {
 			return null;
 		}
 	}

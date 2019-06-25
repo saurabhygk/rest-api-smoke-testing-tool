@@ -34,7 +34,7 @@ public class ConfigFileCreatorUtil {
 	 * @param configFileLoc : Location to store created configuration file
 	 * @param fileName      : file name to be assign to create file
 	 * @param response      : contents to be written into file
-	 * @throws Exception : throes exception if error occurs
+	 * @throws Exception : throws exception if error occurs
 	 */
 	public static void writeFile(String configFileLoc, String fileName, String response) throws Exception {
 		BufferedWriter writer = null;

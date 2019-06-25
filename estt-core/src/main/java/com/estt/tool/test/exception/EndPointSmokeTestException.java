@@ -8,22 +8,23 @@ public class EndPointSmokeTestException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public EndPointSmokeTestException() {
-        super();
-    }
+		super();
+	}
 
-    public EndPointSmokeTestException(String message) {
-        super(message);
-    }
+	public EndPointSmokeTestException(String message) {
+		super(message);
+	}
 
-    public EndPointSmokeTestException(String message, Throwable cause) {
-        super(message, cause);
-    }
+	public EndPointSmokeTestException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-    public EndPointSmokeTestException(Throwable cause) {
-        super(cause);
-    }
+	public EndPointSmokeTestException(Throwable cause) {
+		super(cause);
+	}
 
-    protected EndPointSmokeTestException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+	protected EndPointSmokeTestException(String message, Throwable cause, boolean enableSuppression,
+			boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+	}
 }

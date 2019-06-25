@@ -17,7 +17,7 @@ public class ResponseValidator {
 		if (StringUtils.isEmpty(responseBody) || StringUtils.isEmpty(expectedResponse)) {
 			return null;
 		}
-		
+
 		String body = "";
 		if (contentType.toLowerCase().contains("xml")) {
 			body = responseBody.replaceAll("\"", "");

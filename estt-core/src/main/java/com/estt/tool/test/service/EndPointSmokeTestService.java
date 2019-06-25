@@ -47,10 +47,10 @@ public class EndPointSmokeTestService {
 	// chart
 	Integer successCount = 0;
 	Integer errorCount = 0;
-	
+
 	@Value("${redis.key.timeout:1}")
 	private Integer redisKeyTimout;
-	
+
 	@Value("${redis.key.timeUnit:DAYS}")
 	String timeUnit;
 
@@ -59,7 +59,7 @@ public class EndPointSmokeTestService {
 
 	@Autowired
 	private ConsumeEndPointLogic consumeEndPoint;
-	
+
 	@Autowired
 	private BaseRedisHelper<Object> redisHelper;
 
@@ -100,8 +100,8 @@ public class EndPointSmokeTestService {
 	 * @return List : list of response after testing of each end point
 	 * @throws Exception : throws exception if error occurs
 	 */
-	public void testEndPoints(List<EndPointConfig> endPoints, List<String> errorCodes, String statusFileDirPath, String userId)
-			throws Exception {
+	public void testEndPoints(List<EndPointConfig> endPoints, List<String> errorCodes, String statusFileDirPath,
+			String userId) throws Exception {
 		List<String> statusLines = new ArrayList<String>();
 
 		// variable initialization
@@ -134,7 +134,7 @@ public class EndPointSmokeTestService {
 					if (null == endPointResponse && !StringUtils.isEmpty(endPoint.getExpectedResponse())) {
 						errorCount++;
 						redisStoreOperation(userId.concat("-EC"), errorCount);
-						
+
 						statusLines.add("ERROR ->[".concat(url).concat("] has returned").concat(
 								" null response where there is expected response configured in config file. Either change config file or check your API response"));
 					} else if (null == endPointResponse && StringUtils.isEmpty(endPoint.getExpectedResponse())) {
@@ -165,7 +165,7 @@ public class EndPointSmokeTestService {
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
-			
+
 		}
 
 		if (CollectionUtils.isNotEmpty(statusLines)) {
@@ -192,8 +192,8 @@ public class EndPointSmokeTestService {
 	 * @param errorCodes : List of error codes from ErrorCodes.properties file
 	 * @throws Exception : throws exception if error occurs
 	 */
-	public String processResponseEntity(String url, Response response, List<String> errorCodes, String expectedResponse, String userId)
-			throws Exception {
+	public String processResponseEntity(String url, Response response, List<String> errorCodes, String expectedResponse,
+			String userId) throws Exception {
 		String message = "";
 		String responseBody = response.getResponseBody();
 		String contentType = response.getResponseHeader();
@@ -202,24 +202,24 @@ public class EndPointSmokeTestService {
 		if (errorCodes.contains(message)) {
 			errorCount++;
 			redisStoreOperation(userId.concat("-EC"), errorCount);
-			
+
 			return "ERROR ->[".concat(url).concat("] has returned ").concat("error response code:\"").concat(message)
 					.concat("\", please check your API for more error check.");
 		} else if (null != message && "INVALID".equalsIgnoreCase(message) && !StringUtils.isEmpty(expectedResponse)) {
 			errorCount++;
 			redisStoreOperation(userId.concat("-EC"), errorCount);
-			
+
 			return "ERROR ->[".concat(url).concat("] has returned ").concat("different response then expected")
 					.concat(", please check your API for more error check.");
 		} else if (null != message && "INVALID".equalsIgnoreCase(message) && StringUtils.isEmpty(expectedResponse)) {
 			errorCount++;
 			redisStoreOperation(userId.concat("-EC"), errorCount);
-			
+
 			return "ERROR ->[".concat(url).concat("] having some error, please check your API log.");
 		} else {
 			successCount++;
 			redisStoreOperation(userId.concat("-SC"), successCount);
-			
+
 			return "SUCCESS ->[".concat(url).concat("] executed successfully and matched with expected configuration.");
 		}
 	}

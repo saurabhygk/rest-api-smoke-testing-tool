@@ -45,7 +45,7 @@ public class EndPointSmokeTestServiceImplTest {
 
 	@Mock
 	private ResponseValidator responseValidator;
-	
+
 	@Mock
 	private BaseRedisHelper<Integer> redisHelper;
 

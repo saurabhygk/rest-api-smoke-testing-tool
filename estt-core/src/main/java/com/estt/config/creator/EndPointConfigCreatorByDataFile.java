@@ -11,7 +11,6 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class EndPointConfigCreatorByDataFile {
 
-
 	private String configFileLoc = "";
 	private String dataFilePath = "";
 	private String DATA_FILE_NAME = "datafile.txt";
@@ -30,10 +29,12 @@ public class EndPointConfigCreatorByDataFile {
 	 *
 	 * @throws Exception : throws exception if error occurs
 	 */
-	public void createConfigurationFiles(String providedConfigFileName, String providedErrorCodesFileName) throws Exception {
+	public void createConfigurationFiles(String providedConfigFileName, String providedErrorCodesFileName)
+			throws Exception {
 		File dataFile = new File(dataFilePath.concat("/").concat(DATA_FILE_NAME));
-		if(dataFile == null || !dataFile.exists()){
-			System.out.println(" Either data file does not exists or create data file with name like,".concat(DATA_FILE_NAME));
+		if (dataFile == null || !dataFile.exists()) {
+			System.out.println(
+					" Either data file does not exists or create data file with name like,".concat(DATA_FILE_NAME));
 			return;
 		}
 
@@ -47,31 +48,33 @@ public class EndPointConfigCreatorByDataFile {
 				sbEndPoints.append("},{");
 				continue;
 			}
-			
+
 			if (line.contains("ENDOFREAD")) {
 				String endPoints = sbEndPoints.toString();
 				endPoints = endPoints.substring(0, endPoints.length() - 2);
 				endPoints = endPoints.concat("]");
 				endPoints = endPoints.replaceAll("\\p{Cc}", "");
-				
+
 				if (StringUtils.isNotEmpty(providedConfigFileName)) {
 					providedConfigFileName = providedConfigFileName.concat(JSON_FORMAT);
 				} else {
 					providedConfigFileName = DEFAULT_CONFIG_FILE_NAME;
 				}
-				
-				ConfigFileCreatorUtil.writeFile(configFileLoc, providedConfigFileName, ConfigFileCreatorUtil.writerJsonStringPretty(endPoints));
+
+				ConfigFileCreatorUtil.writeFile(configFileLoc, providedConfigFileName,
+						ConfigFileCreatorUtil.writerJsonStringPretty(endPoints));
 				continue;
 			}
-			
+
 			if (line.toLowerCase().contains("ERRORCODES".toLowerCase())) {
 				String[] errorCodes = line.split("\\|");
 				String errorCode = errorCodes[1].trim();
-				boolean errorCodeContainsComma = errorCode.substring(errorCode.length()-1, errorCode.length()).equals(",") ? true:false;
-				if (null != errorCodes && errorCodeContainsComma){
+				boolean errorCodeContainsComma = errorCode.substring(errorCode.length() - 1, errorCode.length())
+						.equals(",") ? true : false;
+				if (null != errorCodes && errorCodeContainsComma) {
 					errorCode = errorCode.substring(0, errorCode.length() - 1);
 				}
-				
+
 				if (StringUtils.isNotEmpty(providedErrorCodesFileName)) {
 					providedErrorCodesFileName = providedErrorCodesFileName.concat(PROPERTIES_FORMAT);
 				} else {
@@ -124,4 +127,3 @@ public class EndPointConfigCreatorByDataFile {
 
 	}
 }
-
